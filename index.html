@@ -1,22 +1,113 @@
-<body>
-  <audio id="bg-music" src="musica.mp3" loop></audio>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carregando Coração</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-  <!-- Botão de Play -->
-  <div id="play-container" style="position: absolute; top: 20px; right: 20px;">
-    <button id="play-btn" style="
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      width: 90vw;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .loading-text {
+      font-size: 2rem;
+      color: #d6336c;
+      user-select: none;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+      stroke: #d6336c;
+      fill: none;
+      stroke-width: 6;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+
+    .spinner {
+      margin-top: 30px;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f8a5c2;
+      border-top: 4px solid #d6336c;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .question {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .question button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ff5c8d;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .question button:hover {
+      background-color: #d6336c;
+    }
+
+    #noBtn {
+      position: relative;
+    }
+
+    #play-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
       padding: 10px 20px;
       background-color: #ff5c8d;
       border: none;
-      border-radius: 25px;
+      border-radius: 20px;
       color: white;
       font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background-color 0.3s;
-    ">
-      ▶️ Tocar Música
-    </button>
-  </div>
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-music" src="musica.mp3" loop></audio>
+  <button id="play-btn">▶️ Tocar Música</button>
 
   <div class="container">
     <svg viewBox="0 0 512 512">
@@ -68,7 +159,7 @@
 
     requestAnimationFrame(animate);
 
-    // Botão "Não" se move
+    // Faz o botão "Não" fugir
     const noBtn = document.getElementById('noBtn');
     noBtn.addEventListener('mouseover', () => {
       const question = document.getElementById('question');
@@ -82,28 +173,27 @@
       noBtn.style.top = `${randY}px`;
     });
 
-    // Música
+    // Música continua entre páginas
     const music = document.getElementById('bg-music');
-    const playBtn = document.getElementById('play-btn');
     const savedTime = localStorage.getItem('music-time');
-
     if (savedTime) {
       music.currentTime = parseFloat(savedTime);
     }
 
-    playBtn.addEventListener('click', () => {
-      music.play()
-        .then(() => {
-          playBtn.style.display = 'none'; // esconde o botão após tocar
-        })
-        .catch(err => {
-          alert("Clique novamente para ativar a música.");
-          console.error(err);
-        });
-    });
-
     music.addEventListener('timeupdate', () => {
       localStorage.setItem('music-time', music.currentTime);
     });
+
+    // Botão para tocar a música
+    const playBtn = document.getElementById('play-btn');
+    playBtn.addEventListener('click', () => {
+      music.play().then(() => {
+        playBtn.style.display = 'none';
+      }).catch(err => {
+        alert("Clique novamente para ativar a música.");
+        console.error(err);
+      });
+    });
   </script>
 </body>
+</html>
