@@ -89,31 +89,33 @@
       position: relative;
     }
 
+    /* Novo botão Play */
     #play-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      padding: 10px 20px;
-      background-color: #ff5c8d;
-      border: none;
-      border-radius: 20px;
+      padding: 12px 30px;
+      background-color: #d6336c;
       color: white;
-      font-size: 1rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    #play-btn:hover {
+      background-color: #a42a54;
     }
   </style>
 </head>
 <body>
   <audio id="bg-music" src="musica.mp3" loop></audio>
-  <button id="play-btn">▶️ Tocar Música</button>
 
   <div class="container">
     <svg viewBox="0 0 512 512">
       <path id="heart-path" d="M256 464s-24-20-56-52c-44-44-72-72-72-120 0-44 36-80 80-80 24 0 44 12 56 28 12-16 32-28 56-28 44 0 80 36 80 80 0 48-28 76-72 120-32 32-56 52-56 52z"/>
     </svg>
     <div class="loading-text" id="loading-text">Carregando 0%</div>
+    <button id="play-btn">Tocar Música</button>
     <div class="spinner" id="spinner"></div>
     <div class="question" id="question">
       <div>Você quer ver o resto do site que eu fiz pra você?</div>
@@ -127,6 +129,7 @@
   <script>
     const path = document.getElementById('heart-path');
     const loadingText = document.getElementById('loading-text');
+    const playBtn = document.getElementById('play-btn');
     const pathLength = path.getTotalLength();
     path.style.strokeDasharray = pathLength;
     path.style.strokeDashoffset = pathLength;
@@ -148,6 +151,7 @@
         loadingText.textContent = 'Carregando 100%';
         setTimeout(() => {
           loadingText.style.display = 'none';
+          playBtn.style.display = 'block';  // botão aparece depois do carregamento
           document.getElementById('spinner').style.display = 'block';
           setTimeout(() => {
             document.getElementById('spinner').style.display = 'none';
@@ -157,7 +161,18 @@
       }
     }
 
+    // Começa animação ao carregar página
     requestAnimationFrame(animate);
+
+    // Inicialmente botão está oculto até o carregamento acabar
+    playBtn.style.display = 'none';
+
+    // Quando clicar no botão, toca a música e esconde o botão
+    playBtn.addEventListener('click', () => {
+      const music = document.getElementById('bg-music');
+      music.play();
+      playBtn.style.display = 'none';
+    });
 
     // Faz o botão "Não" fugir
     const noBtn = document.getElementById('noBtn');
@@ -171,28 +186,6 @@
       noBtn.style.position = 'absolute';
       noBtn.style.left = `${randX}px`;
       noBtn.style.top = `${randY}px`;
-    });
-
-    // Música continua entre páginas
-    const music = document.getElementById('bg-music');
-    const savedTime = localStorage.getItem('music-time');
-    if (savedTime) {
-      music.currentTime = parseFloat(savedTime);
-    }
-
-    music.addEventListener('timeupdate', () => {
-      localStorage.setItem('music-time', music.currentTime);
-    });
-
-    // Botão para tocar a música
-    const playBtn = document.getElementById('play-btn');
-    playBtn.addEventListener('click', () => {
-      music.play().then(() => {
-        playBtn.style.display = 'none';
-      }).catch(err => {
-        alert("Clique novamente para ativar a música.");
-        console.error(err);
-      });
     });
   </script>
 </body>
