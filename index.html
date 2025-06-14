@@ -1,532 +1,172 @@
-<html class="scroll-smooth" lang="pt-BR">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>
-   Eu te amo infinitamente
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&amp;family=Poppins&amp;display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carregando Coração</title>
   <style>
-   /* Font families */
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(ellipse at bottom, #0a0a0a 0%, #000000 100%);
-    overflow-x: hidden;
-    color: #f0e6f6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem 1rem 3rem;
-  }
-  h1, h2, h3, .title-neon {
-    font-family: 'Dancing Script', cursive;
-  }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-  /* Neon pink/red text style */
-  .neon-text {
-    color: #ff4d6d;
-    text-shadow:
-      0 0 5px #ff4d6d,
-      0 0 10px #ff4d6d,
-      0 0 20px #ff4d6d,
-      0 0 40px #ff4d6d,
-      0 0 80px #ff4d6d;
-  }
-
-  /* Neon number style with smooth glow */
-  #countNumber {
-    font-weight: 900;
-    font-size: 4rem;
-    letter-spacing: 0.05em;
-    color: #ff4d6d;
-    text-shadow:
-      0 0 5px #ff4d6d,
-      0 0 10px #ff4d6d,
-      0 0 20px #ff4d6d,
-      0 0 40px #ff4d6d,
-      0 0 80px #ff4d6d;
-    font-family: 'Dancing Script', cursive;
-    user-select: text;
-    margin-top: 0.25rem;
-  }
-
-  /* Glow button style */
-  .btn-glow {
-    background: #2a0a1e;
-    border: 2px solid #ff4d6d;
-    color: #ff4d6d;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 8px #ff4d6d88;
-    user-select: none;
-  }
-  .btn-glow:hover, .btn-glow:focus {
-    background: #ff4d6d;
-    color: #1a0014;
-    box-shadow:
-      0 0 10px #ff4d6d,
-      0 0 20px #ff4d6d,
-      0 0 30px #ff4d6d,
-      0 0 40px #ff4d6d;
-    outline: none;
-  }
-  .btn-glow:active {
-    transform: scale(0.97);
-  }
-
-  /* Heart pulse animation */
-  @keyframes pulseHeart {
-    0%, 100% {
-      transform: scale(1);
-      filter: drop-shadow(0 0 10px #ff4d6d);
-      opacity: 1;
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
     }
-    50% {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 20px #ff4d6d);
-      opacity: 0.9;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      width: 90vw;
+      max-width: 400px;
+      text-align: center;
     }
-  }
 
-  /* Fade out animation */
-  @keyframes fadeOut {
-    from {opacity: 1;}
-    to {opacity: 0; visibility: hidden;}
-  }
-
-  /* Typewriter effect for titles */
-  .typewriter {
-    overflow: hidden;
-    border-right: .15em solid #ff4d6d;
-    white-space: nowrap;
-    animation:
-      typing 3.5s steps(40, end),
-      blink-caret 0.75s step-end infinite;
-  }
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  @keyframes blink-caret {
-    50% { border-color: transparent; }
-  }
-
-  /* Dark glassmorphism card */
-  .glass-card {
-    background: rgba(40, 10, 30, 0.35);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 77, 109, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(255, 77, 109, 0.15);
-    color: #f0e6f6;
-    transition: box-shadow 0.3s ease;
-  }
-  .glass-card:hover {
-    box-shadow: 0 12px 48px 0 rgba(255, 77, 109, 0.35);
-  }
-
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #1a0014;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #ff4d6d;
-    border-radius: 10px;
-  }
-
-  /* Floating hearts and stars container */
-  #particles {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .particle {
-    position: absolute;
-    opacity: 0.15;
-    animation-timing-function: linear;
-    user-select: none;
-  }
-  .heart-particle {
-    color: #ff4d6d;
-    font-size: 14px;
-    filter: drop-shadow(0 0 2px #ff4d6d);
-  }
-  .star-particle {
-    color: #d8b4fe;
-    font-size: 12px;
-    filter: drop-shadow(0 0 2px #d8b4fe);
-  }
-
-  /* Responsive font sizes */
-  @media (max-width: 640px) {
-    #countNumber {
-      font-size: 2.8rem;
+    .loading-text {
+      font-size: 2rem;
+      color: #d6336c;
+      user-select: none;
     }
-    h1.typewriter {
-      font-size: 2.5rem;
+
+    svg {
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+      stroke: #d6336c;
+      fill: none;
+      stroke-width: 6;
+      stroke-linejoin: round;
+      stroke-linecap: round;
     }
-    h2.typewriter {
-      font-size: 2.25rem;
+
+    .spinner {
+      margin-top: 30px;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f8a5c2;
+      border-top: 4px solid #d6336c;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: none;
     }
-  }
 
-  /* Entry heart styling */
-  #entryAnimation img {
-    width: 12rem;
-    height: 11rem;
-    animation: pulseHeart 2.5s ease-in-out infinite;
-    filter: drop-shadow(0 0 15px #ff4d6d);
-  }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-  /* Buttons container */
-  #mainContent > div.flex {
-    max-width: 360px;
-  }
+    .question {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
 
-  /* Canvas styling */
-  #heartCanvas {
-    background: rgba(40, 10, 30, 0.45);
-    border-radius: 1rem;
-    box-shadow:
-      0 0 15px #ff4d6d88,
-      inset 0 0 10px #ff4d6d66;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    .question button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ff5c8d;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .question button:hover {
+      background-color: #d6336c;
+    }
+
+    #noBtn {
+      position: relative;
+    }
   </style>
- </head>
- <body class="relative bg-gradient-to-b from-black via-[#1a0014] to-black min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-8">
-  <!-- Particles container -->
-  <div aria-hidden="true" id="particles">
+</head>
+<body>
+  <audio id="bg-music" src="musica.mp3" autoplay loop></audio>
+
+  <div class="container">
+    <svg viewBox="0 0 512 512">
+      <path id="heart-path" d="M256 464s-24-20-56-52c-44-44-72-72-72-120 0-44 36-80 80-80 24 0 44 12 56 28 12-16 32-28 56-28 44 0 80 36 80 80 0 48-28 76-72 120-32 32-56 52-56 52z"/>
+    </svg>
+    <div class="loading-text" id="loading-text">Carregando 0%</div>
+    <div class="spinner" id="spinner"></div>
+    <div class="question" id="question">
+      <div>Você quer ver o resto do site que eu fiz pra você?</div>
+      <div style="display: flex; gap: 20px; justify-content: center;">
+        <button onclick="window.location.href='quiz.html'">Sim</button>
+        <button id="noBtn">Não</button>
+      </div>
+    </div>
   </div>
-  <!-- Entry animation container -->
-  <div aria-label="Grande coração vermelho brilhante pulsando suavemente no centro da tela" class="fixed inset-0 flex items-center justify-center bg-black z-50" id="entryAnimation" role="img">
-   <img alt="Grande coração vermelho brilhante pulsando suavemente no centro da tela" height="180" src="https://storage.googleapis.com/a1aa/image/3390bb2f-51df-40bc-9a46-3501a8111d27.jpg" width="200"/>
-  </div>
-  <!-- Main content container, hidden initially -->
-  <main aria-label="Conteúdo principal do site romântico" class="hidden max-w-5xl w-full flex flex-col items-center space-y-10 pt-16 pb-20 z-10 relative" id="mainContent" role="main">
-   <!-- Title with typewriter effect -->
-   <h1 class="text-5xl sm:text-6xl neon-text typewriter select-none" style="max-width: 100vw; overflow-wrap: break-word;">
-    Eu te amo infinitamente:
-   </h1>
-   <!-- Number neon text -->
-   <div aria-atomic="true" aria-label="Número de amor infinito" aria-live="polite" aria-relevant="text" class="select-text" id="countNumber" role="text" tabindex="0">
-    0
-   </div>
-   <!-- Start counting button -->
-   <button aria-label="Começar contagem" class="btn-glow px-8 py-3 rounded-full text-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500" id="startCountBtn" type="button">
-    Começar contagem
-   </button>
-   <!-- Buttons container -->
-   <div class="flex flex-wrap justify-center gap-6 mt-6 w-full max-w-md">
-    <button aria-label="Desenhar coração no canvas" class="btn-glow flex items-center gap-2 px-6 py-3 rounded-full text-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500" id="drawHeartBtn" type="button">
-     <i aria-hidden="true" class="fas fa-heart">
-     </i>
-     Meu coração
-    </button>
-    <button aria-label="Abrir link da flor do nosso amor" class="btn-glow flex items-center gap-2 px-6 py-3 rounded-full text-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500" id="flowerBtn" type="button">
-     <i aria-hidden="true" class="fas fa-seedling">
-     </i>
-     A flor do nosso amor
-    </button>
-    <button aria-label="Ler nosso livro" class="btn-glow flex items-center gap-2 px-6 py-3 rounded-full text-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500" id="bookBtn" type="button">
-     <i aria-hidden="true" class="fas fa-book-open">
-     </i>
-     📖 Ler nosso livro
-    </button>
-   </div>
-   <!-- Canvas container for heart drawing -->
-   <div class="w-full max-w-md mt-10">
-    <canvas aria-label="Canvas para animação de desenho do coração" class="mx-auto rounded-lg shadow-lg glass-card" height="320" id="heartCanvas" width="320">
-    </canvas>
-   </div>
-   <!-- Lista para o Futuro section -->
-   <section aria-labelledby="listaFuturoTitle" class="w-full max-w-4xl glass-card p-8 mt-12 shadow-lg">
-    <h2 class="text-4xl neon-text mb-6 select-none typewriter" id="listaFuturoTitle" style="animation-delay: 0.5s;">
-     Lista para o Futuro
-    </h2>
-    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-lg text-[#f0e6f6]" role="list">
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text font-semibold text-pink-400" tabindex="0">
-      PRINCIPAL: SE CONHECER
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Casar
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ter filhos
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Nomes dos filhos: Mia Manuelly e Brian O’Conner
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Carro dos sonhos
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ter uma casinha na árvore para os nossos filhos
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ter uma piscina bem grandona
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Viajar pelo mundo
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ver as estrelas nas Maldivas
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Visitar Edimburgo no outono
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ver a aurora boreal
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Nadar com porquinhos nas Bahamas
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Conhecer o castelo de Bran na Romênia
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ver a cor dos lagos em Banff, Canadá
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Visitar Aspen no inverno
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Conhecer a Praia Rosa na Indonésia
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Visitar os EUA no Halloween
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Se perder nas ruas de Tóquio
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ir na praia à noite
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Andar de balão de ar quente
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ver o festival de lanternas na Tailândia
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ir no maior deserto de sal do mundo, na Bolívia
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Viajar em família para a Disney
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Conhecer Nova York no Natal
-     </li>
-     <li class="glass-card p-4 rounded-lg border border-pink-600 shadow-md hover:shadow-pink-500 transition-shadow cursor-default select-text" tabindex="0">
-      Ir para Los Angeles
-     </li>
-    </ul>
-   </section>
-  </main>
+
   <script>
-   // Entry animation: show heart pulse for 3 seconds then fade out and show main content
-  const entryAnimation = document.getElementById('entryAnimation');
-  const mainContent = document.getElementById('mainContent');
+    const path = document.getElementById('heart-path');
+    const loadingText = document.getElementById('loading-text');
+    const pathLength = path.getTotalLength();
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
 
-  setTimeout(() => {
-    entryAnimation.style.animation = 'fadeOut 1.5s forwards';
-    setTimeout(() => {
-      entryAnimation.style.display = 'none';
-      mainContent.classList.remove('hidden');
-    }, 1500);
-  }, 3000);
+    const duration = 4000;
+    let startTime = null;
 
-  // Neon number count logic
-  const countNumber = document.getElementById('countNumber');
-  const startCountBtn = document.getElementById('startCountBtn');
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
 
-  let count = 0;
-  let counting = false;
-  let countInterval;
+      path.style.strokeDashoffset = pathLength * (1 - progress);
+      loadingText.textContent = `Carregando ${Math.floor(progress * 100)}%`;
 
-  if(localStorage.getItem('loveCount')) {
-    count = parseInt(localStorage.getItem('loveCount'), 10);
-    countNumber.textContent = count.toLocaleString('pt-BR');
-  }
-
-  function formatNumber(num) {
-    return num.toLocaleString('pt-BR');
-  }
-
-  function startCounting() {
-    if(counting) return;
-    counting = true;
-    startCountBtn.disabled = true;
-    startCountBtn.classList.add('opacity-50', 'cursor-not-allowed');
-    countInterval = setInterval(() => {
-      count++;
-      countNumber.textContent = formatNumber(count);
-      localStorage.setItem('loveCount', count);
-    }, 1);
-  }
-
-  startCountBtn.addEventListener('click', startCounting);
-
-  // Canvas heart drawing animation (smaller heart, no arrow)
-  const drawHeartBtn = document.getElementById('drawHeartBtn');
-  const heartCanvas = document.getElementById('heartCanvas');
-  const ctx = heartCanvas.getContext('2d');
-
-  function clearCanvas() {
-    ctx.clearRect(0, 0, heartCanvas.width, heartCanvas.height);
-  }
-
-  // Smaller heart parametric function
-  // t from 0 to 2*PI
-  function heartPoint(t, scale=10, offsetX=160, offsetY=160) {
-    const x = 16 * Math.pow(Math.sin(t), 3);
-    const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
-    return {
-      x: offsetX + scale * x,
-      y: offsetY - scale * y
-    };
-  }
-
-  // Draw heart with neon stroke style
-  function drawHeart(progress) {
-    ctx.clearRect(0, 0, heartCanvas.width, heartCanvas.height);
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-
-    const gradient = ctx.createLinearGradient(0, 0, heartCanvas.width, heartCanvas.height);
-    gradient.addColorStop(0, '#ff4d6d');
-    gradient.addColorStop(0.5, '#ff85a2');
-    gradient.addColorStop(1, '#ff4d6d');
-
-    ctx.strokeStyle = gradient;
-    ctx.lineWidth = 5;
-    ctx.shadowColor = '#ff4d6d';
-    ctx.shadowBlur = 20;
-
-    ctx.beginPath();
-
-    const totalSteps = 200;
-    const stepsToDraw = Math.floor(totalSteps * progress);
-    for(let i = 0; i <= stepsToDraw; i++) {
-      const t = (i / totalSteps) * 2 * Math.PI;
-      const p = heartPoint(t);
-      if(i === 0) {
-        ctx.moveTo(p.x, p.y);
+      if (progress < 1) {
+        requestAnimationFrame(animate);
       } else {
-        ctx.lineTo(p.x, p.y);
+        loadingText.textContent = 'Carregando 100%';
+        setTimeout(() => {
+          loadingText.style.display = 'none';
+          document.getElementById('spinner').style.display = 'block';
+          setTimeout(() => {
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('question').style.display = 'flex';
+          }, 2000);
+        }, 800);
       }
     }
-    ctx.stroke();
-  }
 
-  let animationStart = null;
-  let animationFrameId = null;
+    requestAnimationFrame(animate);
 
-  function animateHeart(timestamp) {
-    if(!animationStart) animationStart = timestamp;
-    const elapsed = timestamp - animationStart;
-    const duration = 30000; // 30 seconds
-    let progress = elapsed / duration;
-    if(progress > 1) progress = 1;
+    // Faz o botão "Não" fugir
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseover', () => {
+      const question = document.getElementById('question');
+      const rect = question.getBoundingClientRect();
+      const maxX = rect.width - 100;
+      const maxY = 60;
+      const randX = Math.random() * maxX;
+      const randY = Math.random() * maxY;
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${randX}px`;
+      noBtn.style.top = `${randY}px`;
+    });
 
-    drawHeart(progress);
-
-    if(progress < 1) {
-      animationFrameId = requestAnimationFrame(animateHeart);
-    } else {
-      animationFrameId = null;
+    // Música continua entre páginas
+    const music = document.getElementById('bg-music');
+    const savedTime = localStorage.getItem('music-time');
+    if (savedTime) {
+      music.currentTime = parseFloat(savedTime);
     }
-  }
 
-  drawHeartBtn.addEventListener('click', () => {
-    if(animationFrameId) return;
-    clearCanvas();
-    animationStart = null;
-    animationFrameId = requestAnimationFrame(animateHeart);
-  });
-
-  // Flower button opens link in new tab
-  const flowerBtn = document.getElementById('flowerBtn');
-  flowerBtn.addEventListener('click', () => {
-    window.open('https://ilavayou.com.br/visualizar_rosa/41c6717b-6394-4c61-9e13-4d61dc8c9c03', '_blank', 'noopener,noreferrer');
-  });
-
-  // Book button opens link in new tab
-  const bookBtn = document.getElementById('bookBtn');
-  bookBtn.addEventListener('click', () => {
-    // Coloque o link final do livro aqui
-    const bookLink = 'https://example.com/seu-livro-romantico'; 
-    window.open(bookLink, '_blank', 'noopener,noreferrer');
-  });
-
-  // Particles effect: floating hearts and stars
-  const particlesContainer = document.getElementById('particles');
-  const particleCount = 40;
-  const particles = [];
-
-  function createParticles() {
-    for(let i = 0; i < particleCount; i++) {
-      const span = document.createElement('span');
-      span.classList.add('particle');
-      if(Math.random() < 0.6) {
-        span.classList.add('heart-particle');
-        span.textContent = '❤';
-      } else {
-        span.classList.add('star-particle');
-        span.textContent = '✦';
-      }
-      const size = 10 + Math.random() * 8;
-      span.style.fontSize = size + 'px';
-      span.style.left = Math.random() * 100 + 'vw';
-      span.style.top = Math.random() * 100 + 'vh';
-      span.style.animationDuration = (15 + Math.random() * 15) + 's';
-      span.style.animationDelay = (Math.random() * 30) + 's';
-      span.style.opacity = (0.1 + Math.random() * 0.2).toFixed(2);
-      particlesContainer.appendChild(span);
-      particles.push(span);
-    }
-  }
-
-  const styleSheet = document.createElement('style');
-  styleSheet.type = 'text/css';
-  styleSheet.innerText = `
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0.15;
-      }
-      50% {
-        opacity: 0.3;
-      }
-      100% {
-        transform: translateY(-110vh) translateX(20px);
-        opacity: 0;
-      }
-    }
-    .particle {
-      animation-name: floatUp;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
-  `;
-  document.head.appendChild(styleSheet);
-
-  createParticles();
+    music.addEventListener('timeupdate', () => {
+      localStorage.setItem('music-time', music.currentTime);
+    });
   </script>
- </body>
+</body>
 </html>
