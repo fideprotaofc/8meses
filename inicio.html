@@ -1,0 +1,479 @@
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nosso Amor Infinito</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: #fff0f6;
+    color: #7f1d1d;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1.typing {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid #db2777;
+    animation: typing 4s steps(22) forwards, blink 0.75s step-end infinite;
+    max-width: 22ch;
+    margin: 0 auto;
+  }
+  @media (min-width: 640px) {
+    h1.typing {
+      font-size: 3.5rem;
+    }
+  }
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 22ch;
+    }
+  }
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  /* Buttons */
+  .btn-flor {
+    background: linear-gradient(135deg, #f9d5e5 0%, #f48fb1 100%);
+    color: white;
+    box-shadow:
+      0 4px 6px rgba(219, 39, 119, 0.4),
+      0 0 15px rgba(219, 39, 119, 0.3);
+    border-radius: 1.5rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 0.75rem 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition:
+      background 0.4s ease,
+      box-shadow 0.4s ease,
+      transform 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-flor svg {
+    width: 28px;
+    height: 28px;
+    animation: flower-spin 6s linear infinite;
+    filter: drop-shadow(0 0 2px #fff);
+  }
+  .btn-flor::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, #fff0f6 0%, transparent 70%);
+    opacity: 0.3;
+    transform: rotate(45deg);
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .btn-flor:hover::before {
+    opacity: 0.6;
+  }
+  .btn-flor:hover {
+    background: linear-gradient(135deg, #db2777 0%, #9d174d 100%);
+    box-shadow:
+      0 8px 20px rgba(219, 39, 119, 0.8),
+      0 0 30px rgba(219, 39, 119, 0.6);
+    transform: scale(1.1);
+    z-index: 10;
+  }
+  @keyframes flower-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .btn-spotify {
+    background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+    color: white;
+    border-radius: 1.5rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 0.75rem 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow:
+      0 4px 8px rgba(29, 185, 84, 0.5),
+      0 0 12px rgba(29, 185, 84, 0.4);
+    transition:
+      background 0.4s ease,
+      box-shadow 0.4s ease,
+      transform 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-spotify i {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 2px #00000033);
+  }
+  .btn-spotify::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -40%;
+    width: 180%;
+    height: 180%;
+    background: radial-gradient(circle at center, #1ed760 0%, transparent 70%);
+    opacity: 0.25;
+    transform: rotate(30deg);
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .btn-spotify:hover::before {
+    opacity: 0.5;
+  }
+  .btn-spotify:hover {
+    background: linear-gradient(135deg, #17a44c 0%, #13a347 100%);
+    box-shadow:
+      0 8px 24px rgba(23, 164, 76, 0.8),
+      0 0 36px rgba(23, 164, 76, 0.7);
+    transform: scale(1.1);
+    z-index: 10;
+  }
+  /* Botão Livro de 8 meses */
+  .btn-livro {
+    font-family: 'Great Vibes', cursive;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    color: #9b2c2c;
+    font-size: 1.75rem;
+    padding: 0.9rem 3rem;
+    border-radius: 2rem;
+    box-shadow:
+      0 4px 10px rgba(219, 39, 119, 0.3),
+      0 0 15px rgba(219, 39, 119, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    transition:
+      background 0.4s ease,
+      color 0.4s ease,
+      box-shadow 0.4s ease,
+      transform 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-livro span {
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+  .btn-livro:hover {
+    background: linear-gradient(135deg, #db2777 0%, #9d174d 100%);
+    color: #fff0f6;
+    box-shadow:
+      0 8px 25px rgba(219, 39, 119, 0.8),
+      0 0 40px rgba(219, 39, 119, 0.7);
+    transform: scale(1.1);
+    z-index: 10;
+    text-shadow: 0 0 8px #fff0f6aa;
+  }
+  /* Counters container */
+  .counters-container {
+    scrollbar-width: thin;
+    scrollbar-color: #db2777 #fce7f3;
+  }
+  .counters-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  .counters-container::-webkit-scrollbar-track {
+    background: #fce7f3;
+    border-radius: 9999px;
+  }
+  .counters-container::-webkit-scrollbar-thumb {
+    background-color: #db2777;
+    border-radius: 9999px;
+  }
+</style>
+</head>
+<body class="min-h-screen flex flex-col items-center px-6 py-10 sm:py-16 bg-gradient-to-b from-[#fff0f6] to-[#fce7f3]">
+  <header class="mb-10 w-full max-w-4xl px-2">
+    <h1 class="typing text-center text-pink-700 drop-shadow-md select-none">Nosso Amor Infinito</h1>
+  </header>
+
+  <main class="w-full max-w-4xl bg-white bg-opacity-90 rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col gap-12 sm:gap-16">
+    <section class="text-center px-2">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-pink-600 mb-6 font-quicksand tracking-wide">Conheço você há:</h2>
+      <div
+        id="contador-conheco"
+        class="flex flex-wrap justify-center gap-6 sm:gap-8 text-pink-700 font-extrabold text-2xl sm:text-3xl"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="bg-pink-100 rounded-3xl px-6 py-5 shadow-lg min-w-[90px] sm:min-w-[120px] flex flex-col items-center select-none">
+          <span id="meses" class="text-5xl sm:text-6xl leading-none">0</span>
+          <span class="text-base sm:text-lg font-semibold mt-1">meses</span>
+        </div>
+        <div class="bg-pink-100 rounded-3xl px-6 py-5 shadow-lg min-w-[90px] sm:min-w-[120px] flex flex-col items-center select-none">
+          <span id="dias" class="text-5xl sm:text-6xl leading-none">0</span>
+          <span class="text-base sm:text-lg font-semibold mt-1">dias</span>
+        </div>
+        <div class="bg-pink-100 rounded-3xl px-6 py-5 shadow-lg min-w-[90px] sm:min-w-[120px] flex flex-col items-center select-none">
+          <span id="horas" class="text-5xl sm:text-6xl leading-none">0</span>
+          <span class="text-base sm:text-lg font-semibold mt-1">horas</span>
+        </div>
+        <div class="bg-pink-100 rounded-3xl px-6 py-5 shadow-lg min-w-[90px] sm:min-w-[120px] flex flex-col items-center select-none">
+          <span id="minutos" class="text-5xl sm:text-6xl leading-none">0</span>
+          <span class="text-base sm:text-lg font-semibold mt-1">minutos</span>
+        </div>
+        <div class="bg-pink-100 rounded-3xl px-6 py-5 shadow-lg min-w-[90px] sm:min-w-[120px] flex flex-col items-center select-none">
+          <span id="segundos" class="text-5xl sm:text-6xl leading-none">0</span>
+          <span class="text-base sm:text-lg font-semibold mt-1">segundos</span>
+        </div>
+      </div>
+      <p class="mt-6 text-pink-600 font-semibold text-lg sm:text-xl select-text" aria-live="polite" aria-atomic="true">
+        Isso são no total: <span id="total-segundos">0</span> segundos
+      </p>
+    </section>
+
+    <section class="text-center px-2">
+      <p class="text-pink-600 font-semibold text-lg sm:text-xl tracking-wide select-text" aria-live="polite" aria-atomic="true">
+        Falta <span id="faltam-meses">0</span> meses, <span id="faltam-semanas">0</span> semanas, <span id="faltam-dias">0</span> dias, <span id="faltam-horas">0</span> horas, <span id="faltam-minutos">0</span> minutos e <span id="faltam-segundos">0</span> segundos para a gente fazer 8 meses de história.
+      </p>
+    </section>
+
+    <section class="flex flex-col sm:flex-row justify-center gap-8 sm:gap-12 items-center px-2">
+      <a
+        href="http://ilavayou.com.br/visualizar_rosa/41c6717b-6394-4c61-9e13-4d61dc8c9c03"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-flor w-full sm:w-auto justify-center"
+        aria-label="Botão Nossa flor, link para visualizar rosa"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+          role="img"
+          aria-label="Ícone de flor rosa"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3v18m0 0c-3-3-6-6-6-9a6 6 0 0112 0c0 3-3 6-6 9z"
+          />
+        </svg>
+        Nossa flor
+      </a>
+
+      <a
+        href="https://open.spotify.com/playlist/0rShxQaRpg7B2rcyekVxEe?si=660f22558c074d28"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-spotify w-full sm:w-auto justify-center"
+        aria-label="Botão Sua playlist no Spotify"
+      >
+        <i class="fab fa-spotify" aria-hidden="true"></i>
+        Sua playlist
+      </a>
+    </section>
+
+    <section class="text-center px-2 mt-4">
+      <a
+        href="https://drive.google.com/file/d/1FRHITfhd4mrfoUDBP0K3BxWYl2X_vrxo/view"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-livro select-none"
+        aria-label="Link para o Livro de 8 meses"
+      >
+        <span aria-hidden="true" role="img" aria-label="Ícone de livro">📖</span> Livro de 8 meses
+      </a>
+    </section>
+  </main>
+
+<script>
+  // Data inicial: 26/10/2024 00:00:00
+  const inicio = new Date(2024, 9, 26, 0, 0, 0); // month 9 = October (0-based)
+  const contadorMeses = document.getElementById('meses');
+  const contadorDias = document.getElementById('dias');
+  const contadorHoras = document.getElementById('horas');
+  const contadorMinutos = document.getElementById('minutos');
+  const contadorSegundos = document.getElementById('segundos');
+  const totalSegundosEl = document.getElementById('total-segundos');
+
+  const faltamMesesEl = document.getElementById('faltam-meses');
+  const faltamSemanasEl = document.getElementById('faltam-semanas');
+  const faltamDiasEl = document.getElementById('faltam-dias');
+  const faltamHorasEl = document.getElementById('faltam-horas');
+  const faltamMinutosEl = document.getElementById('faltam-minutos');
+  const faltamSegundosEl = document.getElementById('faltam-segundos');
+
+  // Data fixa para 8 meses: 26/06/2025 00:00:00
+  const aniversario8Meses = new Date(2025, 5, 26, 0, 0, 0); // June is month 5 (0-based)
+
+  function pad(n) {
+    return n.toString().padStart(2, '0');
+  }
+
+  // Função para calcular diferença real em meses, dias, horas, minutos, segundos entre duas datas
+  function diffDateReal(start, end) {
+    if (end < start) return { months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+    let yearsDiff = end.getFullYear() - start.getFullYear();
+    let monthsDiff = end.getMonth() - start.getMonth();
+    let totalMonths = yearsDiff * 12 + monthsDiff;
+
+    // Ajustar se o dia do mês do end for menor que start
+    let startDay = start.getDate();
+    let endDay = end.getDate();
+
+    let months = totalMonths;
+    let days = 0;
+
+    // Se o dia do mês do end for menor que start, subtrai 1 mês e calcula dias restantes
+    if (endDay < startDay) {
+      months -= 1;
+      // Calcula a data do mês anterior do end para contar os dias
+      let prevMonth = new Date(end.getFullYear(), end.getMonth(), 0); // último dia do mês anterior
+      days = prevMonth.getDate() - startDay + endDay;
+    } else {
+      days = endDay - startDay;
+    }
+
+    // Agora calcular horas, minutos, segundos
+    let startTime = new Date(start.getFullYear(), start.getMonth() + months, startDay, start.getHours(), start.getMinutes(), start.getSeconds());
+    // Ajusta startTime para o dia correto (pode ultrapassar o mês)
+    if (startTime.getDate() !== startDay) {
+      // Corrige para o último dia do mês se ultrapassou
+      startTime = new Date(startTime.getFullYear(), startTime.getMonth() + 1, 0, start.getHours(), start.getMinutes(), start.getSeconds());
+    }
+
+    let diffMs = end - startTime;
+    if (diffMs < 0) {
+      // Se negativo, ajusta dias e meses
+      days -= 1;
+      diffMs += 86400000;
+    }
+
+    let hours = Math.floor(diffMs / 3600000);
+    diffMs -= hours * 3600000;
+    let minutes = Math.floor(diffMs / 60000);
+    diffMs -= minutes * 60000;
+    let seconds = Math.floor(diffMs / 1000);
+
+    // Ajustar dias negativos (se dias < 0, corrige meses e dias)
+    if (days < 0) {
+      months -= 1;
+      // Recalcula dias com mês anterior
+      let prevMonth = new Date(end.getFullYear(), end.getMonth(), 0);
+      days = prevMonth.getDate() - startDay + endDay;
+    }
+
+    if (months < 0) {
+      months = 0;
+      days = 0;
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
+    }
+
+    return { months, days, hours, minutes, seconds };
+  }
+
+  // Função para converter total segundos desde inicio
+  function totalSegundos(start, end) {
+    let diff = Math.floor((end - start) / 1000);
+    return diff < 0 ? 0 : diff;
+  }
+
+  // Função para calcular diferença para 8 meses (26/06/2025)
+  function diffPara8Meses(hoje) {
+    if (hoje > aniversario8Meses) {
+      return { months: 0, weeks: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+    // Meses reais entre hoje e aniversario8Meses
+    let months = (aniversario8Meses.getFullYear() - hoje.getFullYear()) * 12 + (aniversario8Meses.getMonth() - hoje.getMonth());
+    let dayStart = hoje.getDate();
+    let dayEnd = aniversario8Meses.getDate();
+
+    if (dayEnd < dayStart) {
+      months -= 1;
+    }
+    if (months < 0) months = 0;
+
+    // Data base para meses completos
+    let baseMesCompleto = new Date(hoje.getFullYear(), hoje.getMonth() + months, hoje.getDate(), hoje.getHours(), hoje.getMinutes(), hoje.getSeconds());
+
+    if (baseMesCompleto > aniversario8Meses) {
+      // Ajusta baseMesCompleto para o dia anterior se ultrapassou
+      baseMesCompleto = new Date(baseMesCompleto.getFullYear(), baseMesCompleto.getMonth(), baseMesCompleto.getDate() - 1, baseMesCompleto.getHours(), baseMesCompleto.getMinutes(), baseMesCompleto.getSeconds());
+    }
+
+    let diffMs = aniversario8Meses - baseMesCompleto;
+    if (diffMs < 0) diffMs = 0;
+
+    let totalSeg = Math.floor(diffMs / 1000);
+
+    let weeks = Math.floor(totalSeg / (7 * 86400));
+    let days = Math.floor((totalSeg % (7 * 86400)) / 86400);
+    let hours = Math.floor((totalSeg % 86400) / 3600);
+    let minutes = Math.floor((totalSeg % 3600) / 60);
+    let seconds = totalSeg % 60;
+
+    return { months, weeks, days, hours, minutes, seconds };
+  }
+
+  function atualizarContadores() {
+    const agora = new Date();
+
+    // Diferença real desde inicio
+    const diffReal = diffDateReal(inicio, agora);
+
+    contadorMeses.textContent = diffReal.months;
+    contadorDias.textContent = diffReal.days;
+    contadorHoras.textContent = pad(diffReal.hours);
+    contadorMinutos.textContent = pad(diffReal.minutes);
+    contadorSegundos.textContent = pad(diffReal.seconds);
+
+    // Total segundos
+    totalSegundosEl.textContent = totalSegundos(inicio, agora).toLocaleString('pt-BR');
+
+    // Diferença para 8 meses
+    const faltam = diffPara8Meses(agora);
+
+    faltamMesesEl.textContent = faltam.months;
+    faltamSemanasEl.textContent = faltam.weeks;
+    faltamDiasEl.textContent = faltam.days;
+    faltamHorasEl.textContent = pad(faltam.hours);
+    faltamMinutosEl.textContent = pad(faltam.minutes);
+    faltamSegundosEl.textContent = pad(faltam.seconds);
+  }
+
+  atualizarContadores();
+  setInterval(atualizarContadores, 1000);
+</script>
+</body>
+</html>
